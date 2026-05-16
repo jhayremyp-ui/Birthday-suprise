@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday ??</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3,#fad0c4);
+      padding:20px;
+      position:relative;
+    }
+
+    .container{
+      width:100%;
+      max-width:420px;
+    }
+
+    .birthday-card{
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,0.25);
+      border-radius:24px;
+      padding:35px 25px;
+      text-align:center;
+      color:white;
+      box-shadow:0 8px 32px rgba(0,0,0,0.2);
+      animation:fadeIn 1.2s ease;
+    }
+
+    .cake{
+      font-size:70px;
+      animation:float 3s ease-in-out infinite;
+      margin-bottom:15px;
+    }
+
+    h1{
+      font-size:2.4rem;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    h2{
+      font-size:1.3rem;
+      margin-bottom:18px;
+      font-weight:500;
+    }
+
+    p{
+      font-size:1rem;
+      line-height:1.7;
+      margin-bottom:25px;
+    }
+
+    .btn{
+      background:white;
+      color:#ff4f81;
+      border:none;
+      padding:14px 28px;
+      border-radius:50px;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.3s ease;
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+      background:#ffe5ee;
+    }
+
+    .footer{
+      margin-top:20px;
+      font-size:0.9rem;
+      opacity:0.9;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes float{
+      0%,100%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-10px);
+      }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width:480px){
+
+      .birthday-card{
+        padding:28px 20px;
+      }
+
+      h1{
+        font-size:2rem;
+      }
+
+      h2{
+        font-size:1.1rem;
+      }
+
+      p{
+        font-size:0.95rem;
+      }
+
+      .cake{
+        font-size:58px;
+      }
+
+      .btn{
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="birthday-card">
+
+      <div class="cake">??</div>
+
+      <h1>Happy Birthday!</h1>
+
+      <h2>Dear Friend ??</h2>
+
+      <p>
+        May your birthday be filled with happiness, laughter,
+        love, and unforgettable memories.
+        Wishing you success, good health, and endless joy today and always!
+      </p>
+
+      <button class="btn" onclick="celebrate()">
+        Celebrate ??
+      </button>
+
+      <div class="footer">
+        Made with ??
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Launch confetti on page load
+    window.onload = () => {
+      fireConfetti();
+    };
+
+    function fireConfetti() {
+      confetti({
+        particleCount: 180,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function celebrate() {
+
+      const duration = 4000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+
+        confetti({
+          particleCount: 6,
+          angle: 60,
+          spread: 70,
+          origin: { x: 0 }
+        });
+
+        confetti({
+          particleCount: 6,
+          angle: 120,
+          spread: 70,
+          origin: { x: 1 }
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+
+      })();
+    }
+  </script>
+
+</body>
+</html>
